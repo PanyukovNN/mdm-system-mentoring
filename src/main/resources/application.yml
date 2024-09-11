@@ -1,0 +1,35 @@
+
+server:
+  port: 8020
+
+spring:
+  application:
+    name: mdm-system
+  datasource:
+    url: jdbc:postgresql://localhost:5433/mentoring
+    username: dev
+    password: Ab123456
+    hikari:
+      schema: mdm_system
+      connection-init-sql: CREATE SCHEMA IF NOT EXISTS ${spring.datasource.hikari.schema}
+  liquibase:
+    enabled: true
+    change-log: classpath:/db/changelog/changelog-master.yml
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  kafka:
+    producer:
+      acks: all
+
+mdm:
+  event:
+    update-phone:
+      cron: "*/30 * * * * *"
+    clean-old-records:
+      cron: "0 0 23 * * *"
+  kafka:
+    mdm-event:
+      enabled: true
+      topic-in: MDM.Change.Phone.IN.V1

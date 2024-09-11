@@ -1,0 +1,43 @@
+databaseChangeLog:
+  - changeSet:
+      id: "01.create_mdm_event.yml"
+      author: "Panyukov NN"
+      changes:
+        - createTable:
+            ifNotExists: true
+            tableName: mdm_user_data_service_event
+            remarks: "MDM событие"
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: type
+                  type: varchar
+                  remarks: "Тип события"
+              - column:
+                  name: guid
+                  type: varchar
+                  remarks: "Уникальный идентификатор клиента"
+              - column:
+                  name: phone
+                  type: varchar
+                  remarks: "Телефон"
+              - column:
+                  name: system_id
+                  type: varchar
+                  remarks: "Идентификатор внешней системы, откуда поступило событие"
+              - column:
+                  name: service_id
+                  type: varchar
+                  remarks: "Идентификатор сервиса, в который поступило событие"
+              - column:
+                  name: create_time
+                  type: timestamp
+                  remarks: "Время создания"
+              - column:
+                  name: update_time
+                  type: timestamp
+                  remarks: "Время обновления"
