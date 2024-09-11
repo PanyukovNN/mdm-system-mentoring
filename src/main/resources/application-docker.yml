@@ -1,7 +1,9 @@
 
 spring:
   datasource:
-    url: "jdbc:postgresql://host.docker.internal:5432/postgres"
+    url: "jdbc:postgresql://${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}"
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
   kafka:
     bootstrap-servers:
       - host.docker.internal:29092
