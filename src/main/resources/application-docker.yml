@@ -1,5 +1,7 @@
 
 spring:
+  datasource:
+    url: "jdbc:postgresql://host.docker.internal:5432/postgres"
   kafka:
     bootstrap-servers:
       - host.docker.internal:29092

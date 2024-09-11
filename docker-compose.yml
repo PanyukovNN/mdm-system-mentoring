@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  mdm-system:
+    build: .
+    ports:
+      - 8020:8020
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    env_file:
+      - ~/common-config/config.env
